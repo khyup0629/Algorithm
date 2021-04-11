@@ -55,5 +55,3 @@ for i in range(N):
             result += 1
 
 print(result)
-
-print(list(map(int, '1011')))
