@@ -7,8 +7,9 @@ n = int(input())
 score = []
 for i in range(n):
     score.append(int(input()))
-
+# 마지막 계단을 무조건 밟아야 하므로 거꾸로 놓는다
 score.reverse()
+# 첫 번째 계단을 안 밟는 경우도 고려하기 위해 시작점의 점수는 0
 score.append(0)
 # DP 테이블, d1은 두 칸 전 최대값 비교,
 # d2는 한 칸 전 d1에 (+)
