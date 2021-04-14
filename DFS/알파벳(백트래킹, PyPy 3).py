@@ -21,6 +21,7 @@ def dfs(x, y, count):
                 visited[frame[nx][ny]] = 1
                 # (nx, ny)를 시작점으로 다시 고려
                 dfs(nx, ny, count+1)
+                # 현재 위치한 노드의 방문 기록을 초기화하면서 뒤로 돌아간
                 visited[frame[nx][ny]] = 0  # 백트래킹
 
 
