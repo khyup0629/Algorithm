@@ -3,6 +3,7 @@ n = int(input())
 
 result = 0
 # col : 열, diagonal_1 : 대각선 /, diagonal_2 : 대각선 \, 인덱스를 가리킴.
+# 대각선 인덱스 총 수는 (2n-1)개
 # False : 놓을 수 있음, True : 놓을 수 없음.
 col, diagonal_1, diagonal_2 = [False] * n, [False] * (2*n-1), [False] * (2*n-1)
 
