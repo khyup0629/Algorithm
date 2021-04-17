@@ -40,15 +40,21 @@ def bfs(x, y, flag):
 
 
 def check_fall():
+    # 행의 끝에서부터 위로 탐색
     for i in range(10, -1, -1):
         for j in range(6):
+            # 뿌요 밑에 공간이 한 칸이라도 비었다면,
             if a[i][j] != '.' and a[i+1][j] == '.':
                 for k in range(i+1, 12):
+                    # 끝에서부터 탐색했을 때 처음 나오는 뿌요를 제일 밑으로 내린다.
                     if k == 11 and a[k][j] == '.':
                         a[k][j] = a[i][j]
+                    # i 다음부터(i+1) 탐색하면서 처음으로 뿌요가 나왔을 때
+                    # 그 전(k-1)로 지금 i행값을 땡겨온다.
                     elif a[k][j] != '.':
                         a[k-1][j] = a[i][j]
                         break
+                # 뿌요를 내렸으니 현재 위치한 곳을 비운다(.)
                 a[i][j] = '.'
 
 
@@ -60,6 +66,7 @@ while True:
     for i in range(12):
         for j in range(6):
             if a[i][j] != '.':
+                # 한 번이라도 BFS 를 거치면 cnt >= 1
                 cnt = bfs(i, j, cnt)
     # cnt = 0 이면 없어질 뿌요가 없다는 뜻, 반복 종료
     if cnt == 0:
