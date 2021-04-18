@@ -17,12 +17,14 @@ for _ in range(m):
 for i in range(n+1):
     pair[i].sort()
 
+# dfs 와 bfs 의 경로를 기록하기 위한 빈 리스트
 path_dfs = []
 path_bfs = []
 
 
 def dfs(x):
     visited[x] = True
+    # dfs 의 경로 기록
     path_dfs.append(x)
     for number in pair[x]:
         if not visited[number]:
@@ -33,6 +35,7 @@ def dfs(x):
 def bfs(x):
     visited[x] = True
     q = deque()
+    # bfs 의 최초 경로만 기록
     q.append(x)
     path_bfs.append(x)
     while q:
@@ -40,15 +43,18 @@ def bfs(x):
         for number in pair[z]:
             if not visited[number]:
                 visited[number] = True
+                # bfs 의 나머지 경로 기록
                 path_bfs.append(number)
                 q.append(number)
 
 
+# 방문/미방문 여부 초기화
 visited = [False] * (n + 1)
 dfs(v)
 # 리스트 요소를 한 칸씩 띄워서 출력하고 줄을 바꿔서
 # 다른 리스트 요소를 한 칸씩 띄워서 출력하고 싶다면
 print(' '.join(map(str, path_dfs)))
+# 방문/미방문 여부 초기화
 visited = [False] * (n + 1)
 bfs(v)
 print(' '.join(map(str, path_bfs)))
