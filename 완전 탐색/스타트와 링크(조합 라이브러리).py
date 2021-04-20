@@ -6,7 +6,6 @@ n = int(input())
 s = [list(map(int, input().split())) for _ in range(n)]
 # combinations 를 쓰기 위해 n 인덱스가 n값을 가지는 리스트 생성
 members = [i for i in range(n)]
-possible_team = []
 
 # 조합으로 가능한 팀 생성
 # list(combinations(리스트, 정수)) :
@@ -14,8 +13,7 @@ possible_team = []
 # 오름차순으로 정렬한 리스트가 생성된다.
 # 이 리스트를 1/-1, 2/-2, 3/-3 ... 으로 불러오게 되면
 # 서로 겹치지 않는 2그룹이 만들어진다.
-for team in list(combinations(members, n//2)):
-    possible_team.append(team)
+possible_team = list(combinations(members, n//2))
 
 min_gap = int(1e9)  # 무한대
 # 가능한 팀 경우의 수의 반만큼만
