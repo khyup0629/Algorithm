@@ -6,7 +6,7 @@ for _ in range(n):
     string_cnt = len(string_lst)
     array.append((string_lst, string_cnt))
 # 중복 제거
-array = list(set(array))
+array = list(set(array))  # 랜덤하게 정렬된다
 # array 의 원소가 (0, 1) 형태로 있으면 1을 우선적으로 정렬 후 0을 정렬
 array.sort(key=lambda word: (word[1], word[0]))
 
