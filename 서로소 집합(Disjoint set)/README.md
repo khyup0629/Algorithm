@@ -8,7 +8,7 @@
   + [기본적인 구현 방법 (Python)](#기본적인-구현-방법-Python)
 
 ---
-### 서로소 집합 (Disjoint Sets)
+## 서로소 집합 (Disjoint Sets)
 
 공통 원소가 없는 두 집합을 의미
 
