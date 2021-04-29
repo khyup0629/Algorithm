@@ -151,5 +151,6 @@ def find_parent(parent, x):
 기본적인 방법에 비하여 시간 복잡도가 개선된다.
 
 ![서로소8](https://user-images.githubusercontent.com/43658658/116574246-8213b080-a948-11eb-94fa-c431ffe71ca6.PNG)
+[위로](#서로소-집합-자료구조)
 
 ---
