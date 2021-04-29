@@ -65,6 +65,8 @@
 
 ![서로소 5](https://user-images.githubusercontent.com/43658658/116568950-e84a0480-a943-11eb-9511-e5d669b92007.PNG)
 
+[위로](#서로소-집합-자료구조)
+
 ---
 ### 서로소 집합 자료구조의 연결성
 
@@ -132,6 +134,8 @@ for i in range(1, v + 1):
   + **수행된 연산들** : Union(4,5), Union(3,4), Union(2,3), Union(1,2)
 
 ![서로소7](https://user-images.githubusercontent.com/43658658/116574244-817b1a00-a948-11eb-832b-6ef5248c8ff5.PNG)
+
+[위로](#서로소-집합-자료구조)
 
 ---
 ## 경로 압축
