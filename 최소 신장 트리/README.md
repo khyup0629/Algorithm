@@ -102,7 +102,7 @@
 + [알고리즘 수행 결과]
 	+ 최소 신장 트리에 포함되어 있는 간선의 비용만 모두 더하면, 그 값이 최종 비용에 해당한다.
 
-<center>![image](https://user-images.githubusercontent.com/43658658/116688962-68c73e80-a9f2-11eb-8bbe-af044de1b99c.png)</center>
+![image](https://user-images.githubusercontent.com/43658658/116688962-68c73e80-a9f2-11eb-8bbe-af044de1b99c.png)
 
 [위로](#신장-트리)
 
