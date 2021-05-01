@@ -12,7 +12,7 @@
 + 수열 {10, 20, 30, 40, 50}이 있다고 하자.
 	+ 두 번째 수부터 네 번째수까지의 합은 20 + 30 + 40 = 90
 
-### 문제 설명
+> <h3>문제 설명
 
 + N개의 정수로 구성된 수열이 있다.
 + M개의 쿼리 정보가 주어진다.
@@ -20,7 +20,7 @@
 	+ 각 쿼리에 대하여 [Left, Right] 구간에 포함된 데이터들의 합을 출력해야 한다.
 + 수행 시간 제한은 **O(N + M)** 이다.
 
-### 문제 해결 아이디어
+> <h3>문제 해결 아이디어
 
 + **누적 합**을 활용한 알고리즘으로 해결하면 된다.
 
@@ -29,20 +29,21 @@
 
 ![image](https://user-images.githubusercontent.com/43658658/116772360-6b28a780-aa89-11eb-828e-b8d12c931d51.png)
 
-### 코드 분석
+> <h3>코드 분석
+
 ``` python
 # 데이터의 개수 N과 전체 데이터 선언
 n = 5
 data = [10, 20, 30, 40, 50]
 
-# 접두사 합(Prefix Sum) 배열 계산
+# 누적 합(Prefix Sum) 배열 계산
 sum_value = 0
 prefix_sum = [0]
 for i in data:
     sum_value += i
     prefix_sum.append(sum_value)
 
-# 구간 합 계산 (세 번째 수부터 네 번째 수까지)
+# 누적 합 계산 (세 번째 수부터 네 번째 수까지)
 left = 3
 right = 4
 print(prefix_sum[right] - prefix_sum[left - 1])
