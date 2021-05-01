@@ -1,4 +1,4 @@
-
+참조 : [한빛미디어] 이것이 취업을 위한 코딩 테스트다 with 파이썬 (나동빈 저)
 
 ---
 # 소수 판별 (Primality test) 및 에라토스테네스의 체 (Sieve of Eratosthenes)
