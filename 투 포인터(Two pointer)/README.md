@@ -1,4 +1,4 @@
-
+참조 : [한빛미디어] 이것이 취업을 위한 코딩 테스트다 with 파이썬 (나동빈 저)
 
 ---
 # 투 포인터 (Two pointer)
@@ -80,6 +80,8 @@
 ![image](https://user-images.githubusercontent.com/43658658/116771179-5dbcee80-aa84-11eb-8440-b2af30547691.png)
 
 + [알고리즘 결과] 연속 부분 수열의 합이 5인 개수는 총 **3개**이다.
+
+![image](https://user-images.githubusercontent.com/43658658/116771489-df158080-aa86-11eb-9344-593ef95d0ae1.png)
 
 ### 코드 분석
 ``` python
