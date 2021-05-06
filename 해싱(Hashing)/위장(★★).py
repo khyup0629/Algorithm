@@ -42,3 +42,5 @@ def solution(clothes):
             answer += multi
 
     return answer
+
+# 문제 : https://programmers.co.kr/learn/courses/30/lessons/42578
