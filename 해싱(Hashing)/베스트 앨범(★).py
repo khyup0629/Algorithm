@@ -80,3 +80,5 @@ def solution(genres, plays):
             answer.append(plays_priority[b][0][1])
 
     return answer
+
+# 문제 : https://programmers.co.kr/learn/courses/30/lessons/42579
