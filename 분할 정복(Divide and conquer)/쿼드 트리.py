@@ -1,5 +1,4 @@
-# DFS로 해결하였다. 탐색해야하는 구간의 순서가 정해져 있고
-#
+# DFS로 해결하였다.
 
 import sys
 sys.setrecursionlimit(10**6)
