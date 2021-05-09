@@ -26,3 +26,8 @@
 + (★★★) : 풀지 못했고, 아이디어를 참고해도 **이해가 되지 않는** 코드
 
 ---
+## Python 기초
+
++ [진수 변환](https://github.com/khyup0629/Algorithm/blob/Python/%EC%BD%94%EB%93%9C%EC%97%85%20%EA%B8%B0%EC%B4%88%20100%EC%A0%9C/README.md)
+
+---
