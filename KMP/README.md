@@ -16,7 +16,7 @@
 
 > <h3>KMP 알고리즘 동작 방식
 
-+ 전체 문자열 BABCABABAABABAA 중에서 BAABABAA 문자열을 찾는다고 하자.
++ [문제]전체 문자열 **BABCABABAABABAA** 중에서 **BAABABAA** 문자열을 찾는다고 하자.
 
 ![image](https://user-images.githubusercontent.com/43658658/117924791-41953900-b331-11eb-8862-65bb8fdd6138.png)
 
@@ -64,8 +64,75 @@
 
 + [Step 7] 찾는 문자열의 길이(8) - 최대 접두부 길이(3) = 5 만큼 오른쪽으로 이동한다.
 
-![image](https://user-images.githubusercontent.com/43658658/117927483-3b08c080-b335-11eb-967e-0b64e30da383.png)
+![image](https://user-images.githubusercontent.com/43658658/117927853-c08c7080-b335-11eb-9284-22484cdd671e.png)
 
 + [Step 8] 전체 문자열을 벗어났으므로 종료한다.
 
 + [결과] 일치하는 문자열 갯수 : 1개
+
+> <h3>실패 함수
+
++ 실패 함수는 KMP 알고리즘 수행 중, 일치하지 않는 문자가 있을 때 **어디서부터 검색을 해야 할 지(몇 칸을 뛰어넘어야 할지) 알려주는 지표**이다.
++ **패턴의 처음부터 해당 위치까지 일치하는 접두부와 접미부의 길이가 얼마나 되는지를 기록하는 부분 일치 테이블(pi)을 만드는 함수**이다.
++ **부분 일치 테이블(pi)의 마지막 인덱스 값을 확인**하면 **최대 접두부의 길이**를 알 수 있다.
+
++ [문제] 최대 접두부의 길이를 찾아야 하는 문자열이 **AABAAA** 라고 하자.
++ pi 테이블의 길이를 문자열 길이만큼으로 만들고 모든 값을 0으로 설정한다.
++ i = 1, j = 0부터 출발한다.
+
+![image](https://user-images.githubusercontent.com/43658658/117929469-d307a980-b337-11eb-8216-3186447c5805.png)
+
++ [Step 1] 문자열[i]와 문자열[j]를 비교한다.
+  + **두 문자가 같기** 때문에 j를 +1한 후 pi[i] = j 를 기록한다.
+  + pi[1] = 1, j = 1
+
+![image](https://user-images.githubusercontent.com/43658658/117929798-2c6fd880-b338-11eb-85ed-63a619bc1a20.png)
+
++ [Step 2] **i를 +1**하고 문자열[i]와 문자열[j]를 비교한다.
+  + **두 문자가 다르므로** j가 0이 되거나 문자열[i]과 문자열[j]가 같아질 때까지 **j = pi[j-1]를 반복**한다.
+  + 반복 결과 j = pi[1-0] = 0 이 되었을 때 **j가 0이 되었으므로 반복이 종료**된다.
+
+![image](https://user-images.githubusercontent.com/43658658/117930304-cc2d6680-b338-11eb-9369-8c747c15356e.png)
+
++ [Step 3] 문자열[i]와 문자열[j]를 비교한다.
+  + **두 문자가 다르므로** i를 +1한다.
+
+![image](https://user-images.githubusercontent.com/43658658/117930370-dcdddc80-b338-11eb-84e7-3ff29cb0140e.png)
+
++ [Step 4] 문자열[i]와 문자열[j]를 비교한다.
+  + **두 문자가 같기** 때문에 j를 +1한 후 pi[i] = j 를 기록한다.
+  + pi[3] = 1, j = 1
+
+![image](https://user-images.githubusercontent.com/43658658/117930578-20d0e180-b339-11eb-85e2-659579861ad2.png)
+
++ [Step 5] **i를 +1**하고 문자열[i]와 문자열[j]를 비교한다.
+  + **두 문자가 같기 때문에** j를 +1한 후 pi[i] = j 를 기록한다.
+  + pi[4] = 2, j = 2
+
+![image](https://user-images.githubusercontent.com/43658658/117930715-4cec6280-b339-11eb-8266-4e1e6661ce7e.png)
+
++ [Step 6] **i를 +1**하고 문자열[i]와 문자열[j]를 비교한다.
+  + **두 문자가 다르므로** j가 0이 되거나 문자열[i]과 문자열[j]가 같아질 때까지 **j = pi[j-1]를 반복**한다.
+  + 반복 결과 j = pi[2-1] = 1 이 되었을 때 **문자열[i]와 문자열[j]가 같으므로 반복이 종료**된다.
+
+![image](https://user-images.githubusercontent.com/43658658/117931130-c71ce700-b339-11eb-87a3-0a9d296677be.png)
+
++ [Step 7] 문자열[i]와 문자열[j]를 비교한다.
+  + **두 문자가 같기** 때문에 j를 +1한 후 pi[i] = j 를 기록한다.
+  + pi[5] = 2, j = 2
+
+![image](https://user-images.githubusercontent.com/43658658/117931266-f03d7780-b339-11eb-9ef1-c566ea97005e.png)
+
++ [Step 8] **i가 문자열을 모두 탐색**했으므로 **반복을 종료**하고, **pi 테이블의 마지막 값**을 구한다.
+  + **현재 문자열의 최대 접두부 길이는 2**인 것을 알 수 있다.
+
+![image](https://user-images.githubusercontent.com/43658658/117931588-50341e00-b33a-11eb-915d-d60dda28775a.png)
+
+[처음으로](#KMP-알고리즘)
+
+---
+[참고]
++ https://carstart.tistory.com/143
++ https://developmentdiary.tistory.com/455
+
+---
