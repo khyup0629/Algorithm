@@ -6,7 +6,7 @@
 ---
 ## 알고리즘 개념 정리
 
-+ [KMP (Knuth–Morris–Pratt)]
++ [KMP (Knuth–Morris–Pratt)](https://github.com/khyup0629/Algorithm/blob/Python/KMP/README.md)
 + [누적 합 (Prefix sum)](https://github.com/khyup0629/Algorithm/blob/Python/%EB%88%84%EC%A0%81%20%ED%95%A9(Prefix%20sum)/README.md)
 + 분할 정복 (Divide and conquer)
 + [서로소 집합 (Disjoint set)](https://github.com/khyup0629/Algorithm/blob/Python/%EC%84%9C%EB%A1%9C%EC%86%8C%20%EC%A7%91%ED%95%A9(Disjoint%20set)/README.md)
