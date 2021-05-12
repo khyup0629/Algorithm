@@ -128,6 +128,25 @@
 
 ![image](https://user-images.githubusercontent.com/43658658/117931588-50341e00-b33a-11eb-915d-d60dda28775a.png)
 
+> <h3>실패 함수 파이썬 구현
+
+``` python
+l = int(input()) # 문자열 길이
+s = input() # 문자열
+
+# 실패 함수
+j = 0  # j는 0에서 출발
+pi = [0] * l  # 모든 초기값이 0인 문자열 길이(l)만큼의 부분 일치 테이블 생성
+for i in range(1, l):  # i는 1부터 시작해 문자열 길이(l)만큼 증가
+    while j > 0 and s[j] != s[i]:  # j == 0 or s[j] == s[i]가 될 때까지 반복
+        j = pi[j-1]
+    if s[j] == s[i]:  # 두 문자가 같으면 j를 +1한 후 부분 일치 테이블 갱신
+        j += 1
+        pi[i] = j
+
+print(pi[l-1])  # 현재 문자열의 최대 접두부 길이는 부분 일치 테이블(pi)의 마지막 항(l-1번째)
+```
+
 [처음으로](#KMP-알고리즘)
 
 ---
