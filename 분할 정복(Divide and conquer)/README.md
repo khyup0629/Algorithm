@@ -94,10 +94,10 @@ def merge(left, right):
 			result.append(left.pop(0))
 		else:
 			result.append(right.pop(0))
-		if len(left) > 0:  # 왼쪽 리스트에 원소가 남아있는 경우
-			result.extend(left)
-		if len(right) > 0:  # 오른쪽 리스트에 원소가 남아있는 경우
-			result.extend(right)
+	if len(left) > 0:  # 왼쪽 리스트에 원소가 남아있는 경우
+		result.extend(left)
+	if len(right) > 0:  # 오른쪽 리스트에 원소가 남아있는 경우
+		result.extend(right)
 	return result
 ```
 
