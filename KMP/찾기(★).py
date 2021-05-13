@@ -45,6 +45,7 @@ print(cnt)
 for i in result:
     print(i, end=' ')
 
+# 문제 : https://www.acmicpc.net/problem/1786
 
 """
 (보충 설명)
