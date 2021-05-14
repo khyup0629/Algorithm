@@ -8,6 +8,7 @@
 
 + [KMP (Knuth–Morris–Pratt)](https://github.com/khyup0629/Algorithm/blob/Python/KMP/README.md)
 + [누적 합 (Prefix sum)](https://github.com/khyup0629/Algorithm/blob/Python/%EB%88%84%EC%A0%81%20%ED%95%A9(Prefix%20sum)/README.md)
++ [라빈 카프(Rabin-Karp)](https://github.com/khyup0629/Algorithm/tree/Python/%EB%9D%BC%EB%B9%88%20%EC%B9%B4%ED%94%84(Rabin-Karp)#%EB%9D%BC%EB%B9%88-%EC%B9%B4%ED%94%84rabin-karp)
 + [분할 정복 (Divide and conquer)](https://github.com/khyup0629/Algorithm/tree/Python/%EB%B6%84%ED%95%A0%20%EC%A0%95%EB%B3%B5(Divide%20and%20conquer)#%EB%B6%84%ED%95%A0-%EC%A0%95%EB%B3%B5divide-and-conquer)
 + [서로소 집합 (Disjoint set)](https://github.com/khyup0629/Algorithm/blob/Python/%EC%84%9C%EB%A1%9C%EC%86%8C%20%EC%A7%91%ED%95%A9(Disjoint%20set)/README.md)
 + [소수 판별 (Primality test) 및 에라토스테네스의 체 (Sieve of Eratosthenes)](https://github.com/khyup0629/Algorithm/blob/Python/%EC%86%8C%EC%88%98%20%ED%8C%90%EB%B3%84(Primality%20test)%20%EB%B0%8F%20%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98%20%EC%B2%B4(Sieve%20of%20Eratosthenes)/README.md)
