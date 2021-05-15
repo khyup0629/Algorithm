@@ -7,7 +7,7 @@
 ## 알고리즘 개념 정리
 
 + [KMP (Knuth–Morris–Pratt)](https://github.com/khyup0629/Algorithm/blob/Python/KMP/README.md)
-+ [누적 합 (Prefix sum)](https://github.com/khyup0629/Algorithm/blob/Python/%EB%88%84%EC%A0%81%20%ED%95%A9(Prefix%20sum)/README.md)
++ [누적 합 (Prefix sum)](https://github.com/khyup0629/Algorithm/tree/Python/%EB%88%84%EC%A0%81%20%ED%95%A9(Prefix%20sum)#%EB%88%84%EC%A0%81-%ED%95%A9prefix-sum)
 + [라빈 카프(Rabin-Karp)](https://github.com/khyup0629/Algorithm/tree/Python/%EB%9D%BC%EB%B9%88%20%EC%B9%B4%ED%94%84(Rabin-Karp)#%EB%9D%BC%EB%B9%88-%EC%B9%B4%ED%94%84rabin-karp)
 + [분할 정복 (Divide and conquer)](https://github.com/khyup0629/Algorithm/tree/Python/%EB%B6%84%ED%95%A0%20%EC%A0%95%EB%B3%B5(Divide%20and%20conquer)#%EB%B6%84%ED%95%A0-%EC%A0%95%EB%B3%B5divide-and-conquer)
 + [서로소 집합 (Disjoint set)](https://github.com/khyup0629/Algorithm/blob/Python/%EC%84%9C%EB%A1%9C%EC%86%8C%20%EC%A7%91%ED%95%A9(Disjoint%20set)/README.md)
