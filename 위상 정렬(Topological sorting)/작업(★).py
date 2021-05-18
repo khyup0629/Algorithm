@@ -36,3 +36,5 @@ def topological_sorting():  # 위상 정렬
 topological_sorting()
 
 print(max(dp))
+
+# 문제 : https://www.acmicpc.net/problem/2056
