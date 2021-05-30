@@ -1,13 +1,16 @@
 # 세그먼트 트리(Segment tree)
 
++ [구간 합 구하기](#구간-합-구하기)
++ [Lazy Propagation](#Lazy-Propagation)
+
+---
 ## 구간 합 구하기
 
 + 문제를 통해 세그먼트 트리의 개념과 구현 방법에 대해 알아보자.
 
 > <h3>풀이 설명
 
-[문제]
-=> https://www.acmicpc.net/problem/2042
+[문제] => [구간 합 구하기](https://www.acmicpc.net/problem/2042)
 
 ![image](https://user-images.githubusercontent.com/43658658/120097141-d7bac300-c169-11eb-9df2-94d9407416bd.png)
 
@@ -197,3 +200,34 @@ def base_case_sum(node, start, end, left, right):
     # base-case를 모두 더한다.
     return base_case_sum(node * 2, start, mid, left, right) + base_case_sum(node*2+1, mid+1, end, left, right)
 ```
+
+## Lazy Propagation
+
+[문제] => [구간 합 구하기 2](https://www.acmicpc.net/problem/10999)
+
++ 변경되는 원소가 '하나'가 아닌 '구간'일 경우 Lazy Propagation을 이용해야 효율적인 계산을 할 수 있다.
+
+> <h3>update 함수의 변경
+
++ 기존 '구간 합 구하기' 문제에서 update 함수를 '구간이 변경'되는 특징에 맞게 약간 고쳐보았다.
+
+``` python
+def update(node, d, start, end, left, right):
+    if end < left or right < start:
+        return
+
+    if start == end:
+        tree[node] = num[start] + d
+        num[start] += d
+    else:
+        mid = (start + end) // 2
+        update(node*2, d, start, mid, left, right)
+        update(node*2+1, d, mid+1, end, left, right)
+        tree[node] = tree[node*2] + tree[node*2+1]
+```
+
++ 얼핏 보면 효율적으로 보일 수 있으나, 전체 숫자를 업데이트 하려면 결국 트리의 모든 노드를 방문해야 하는 비효율성을 지녔다. 시간 복잡도는 노드 개수가 N일 때 O(NlogN)이다.
++ 따라서, 더 효율적인 개념을 도입해야 하는데 이 경우 적용할 수 있는 알고리즘이 Lazy Propagation이다.
+
+> <h3>Lazy Propagation 개념
+  
