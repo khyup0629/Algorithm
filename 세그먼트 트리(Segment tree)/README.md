@@ -230,4 +230,225 @@ def update(node, d, start, end, left, right):
 + 따라서, 더 효율적인 개념을 도입해야 하는데 이 경우 적용할 수 있는 알고리즘이 Lazy Propagation이다.
 
 > <h3>Lazy Propagation 개념
-  
+
++ 기존의 update 함수가 원소가 변경될 때마다 세그먼트 트리를 갱신해줘야했던 것과 달리,
++ Lazy 값을 이용하면 Top-down 방식으로 내려오면서 변경 구간에 해당 노드가 포함되면 변경되는 값만큼 자식 노드들의 lazy에 저장해놓기만 하고 당장 모든 노드를 업데이트 하지 않아도 된다. 
++ 그 아래 노드들은 각 노드에 방문할 때 lazy 값을 통해 업데이트를 수행한다.
+
++ 아래 그림은 세그먼트 트리에서 3~7을 변경하는 경우에 변경해야 하는 노드를 초록색 또는 파란색으로 칠한 그림이다.
+
+![image](https://user-images.githubusercontent.com/43658658/120108207-26cf1b00-c19f-11eb-9f01-8f8d8a3b14c3.png)
+
++ 파란색으로 색칠되어 있는 3~4와 5~7은 변경해야하는 구간 3~7에 포함된다. 따라서, 3~4와 5~7을 루트로하는 서브트리는 모두 3~7에 포함되게 된다. 이런 경우에는 더 이상 업데이트를 수행하지 않고, 나중에 다시 업데이트를 수행하러 그 노드에 방문했을 때, 업데이트를 진행해도 된다.
++ 이렇게 업데이트를 미룰 때 사용하는 배열이 lazy가 된다.
++ **lazy[i]**는 다음 업데이트에 i번 노드에 더해져야할 수가 저장되어 있다.
++ 3~4를 나타내는 노드의 lazy에 10이 저장되어 있다면, 3번째 수와 4번째 수에 10을 더해야 하는데, 나중에 10을 더하겠다는 의미를 가지게 되고, 5~7의 lazy에 20이 저장되어 있다면, 5, 6, 7번째 수에 20을 더해야 하지만, **지금은 더하지 않고 나중에 더하겠다**는 의미를 가지게 된다.
+
+> <h3>Lazy Propagation 구체적인 예시 & 코드 
+
++ 아래의 세그먼트 트리를 통해 Lazy 개념을 학습해보자.
+
+![image](https://user-images.githubusercontent.com/43658658/120108608-e83a6000-c1a0-11eb-8811-a0c1c121287a.png)
+
++ 위쪽 숫자는 각 노드가 담당하고 있는 범위, 아래 숫자는 저장되어 있는 값이다.
+
+[step 1]
+
++ 여기서 3~7번째 수에 2를 더한다면, 업데이트해야하는 노드는 아래 그림과 같은 초록색과 파란색이다.
+
+![image](https://user-images.githubusercontent.com/43658658/120108617-f38d8b80-c1a0-11eb-9954-1f21acc375d1.png)
+
++ **초록색 노드**는 담당하고 잇는 구간이 3~7에 **일부만 포함**되는 경우, **파란색**은 **모두 포함**되는 경우이다.
++ **초록색 노드**인 경우에는 **일반적인 세그먼트 트리를 업데이트**하는 방식으로 진행하면 되지만, **파란색 노드**의 경우에는 **조금 특별하게 진행**해야 한다.
++ 파란색 노드의 아래에 있는 노드는 모두 업데이트하려고 하는 구간 3~7에 포함된다. 따라서, **아래에 있는 노드의 업데이트**는 **나중에 필요할 때 하기로 하고**, 그 값을 **lazy[i]에 적어둔다.**
++ 초록색 노드와 파란색 노드의 코드 구현 방법은 update 함수로서 아래와 같다.
+
+``` python
+def update(node, d, start, end, left, right):
+    # 현재 노드에 남아 있는 lazy 값을 tree 값에 더해주고 초기화한다.
+    # update 의 update_lazy 는 새로운 lazy 값을 받기 위함이다.
+    update_lazy(node, start, end)
+    if end < left or right < start:  # 전혀 속하지 않으면 스킵
+        return
+
+    if left <= start and end <= right:  # 완전히 속하면,
+        tree[node] += (end-start+1) * d
+        if start != end:  # 리프 노드가 아니면,
+            lazy[node*2] += d  # 아래의 노드는 나중에 업데이트 하기 위해 lazy에 기록해둔다.
+            lazy[node*2+1] += d
+    else:  # 일부만 속하면,
+        mid = (start + end) // 2
+        update(node*2, d, start, mid, left, right)
+        update(node*2+1, d, mid+1, end, left, right)
+        tree[node] = tree[node*2] + tree[node*2+1]
+```
+
+![image](https://user-images.githubusercontent.com/43658658/120108668-36e7fa00-c1a1-11eb-96ec-6c6aa8100eb3.png)
+
++ 노드 옆에 회색으로 적혀있는 숫자가 해당 노드의 lazy 값이다. 없는 노드의 lazy 값은 0이다.
++ 앞으로는 항상 어떤 노드를 방문할 때마다 lazy 값이 있는지를 검사해야 한다. **만약에, lazy 값이 0이 아니라면**, **현재 노드에 해당하는 값을 올바르게 더해주고, 자식 노드에게 lazy를 물려줘야 한다.** 여기서 **올바르게란, 단순히 lazy[i]의 값을 더하는 것이 아니고, lazy[i]의 값에 end-start+1의 값을 곱해서 더하는 것을 의미**한다. 해당하는 노드가 담당하는 구간이 start ~ end라면, **총 담당하는 수의 개수는 end-start+1개** 이기 때문에, 곱해서 더해주어야 한다.
++ 위의 알고리즘을 함수로 표현하면 아래와 같은 코드로 작성된다.
+
+``` python
+def update_lazy(node, start, end):  # 현재 노드에 남아있는 lazy 값을 tree 값에 더해준다.
+    if lazy[node] != 0:
+        tree[node] += (end-start+1) * lazy[node]  # 올바르게 더해준다.
+        if start != end:  # 리프 노드가 아니면,
+            lazy[node*2] += lazy[node]  # 자식 노드에게 lazy 값을 물려준다.
+            lazy[node*2+1] += lazy[node]
+        lazy[node] = 0  # 초기화
+```
+
+[step 2]
+
++ 이제 4~9번째 수에 1을 더해보자.
+
+![image](https://user-images.githubusercontent.com/43658658/120108901-19fff680-c1a2-11eb-9ae0-1326fd8ac3e6.png)
+
++ 실제로는 3~4에서 3번과 4번을 담당하는 노드를 호출하기 때문에, 3번만 담당하는 노드도 호출하게 된다.
+
+![image](https://user-images.githubusercontent.com/43658658/120108923-369c2e80-c1a2-11eb-9b0c-41cc04867014.png)
+
++ 3번과 4를 담당하는 노드에 방문했을 때는, lazy값이 0보다 크기 때문에, lazy값을 먼저 업데이트해주고나서 1을 더해주게 된다. (이는 후에 update, base_case_sum 함수의 첫 부분에 update_lazy 함수를 넣음으로써 구현할 수 있다. update_lazy 함수를 통해 해당 노드의 lazy 값을 업데이트 해주고 초기화해준 뒤에 update를 통해 1을 더해주는 것이다.) 따라서, 트리에 저장되어 있는 값과 lazy 값은 아래 그림과 같게 된다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109051-ba561b00-c1a2-11eb-950e-d83c641a04e0.png)
+
+[step 3]
+
++ 마지막으로 6에서 8까지 합을 구하는 과정을 살펴보자.
++ 6에서 8의 합을 구하려면 아래 그림에서 초록색으로 색칠되어 있는 정점을 방문해야 한다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109117-0903b500-c1a3-11eb-90b5-c2fc38261c83.png)
+
++ 루트 노드의 0~9 구간은 더해야 하는 구간인 6~8 구간과 겹치기 때문에, 좌우 자식 노드인 0~4와 5~9를 호출한다.
++ 0~4는 6~8과 전혀 겹치지 않기 때문에 0을 리턴한다.
++ 5~9는 6~8과 겹치기 때문에 좌우 자식 노드인 5~7과 8~9를 호출한다.
++ 5~7 노드는 lazy 값을 가지고 있다. update_lazy를 통해 현재 노드를 업데이트하고, 자식에게 lazy 값인 1을 물려준다.
++ 5~7에 저장되어 있는 값은 24이고, lazy의 값은 1이기 때문에, 5~7에 저장될 값은 24 + 1*(7-5+1) = 27이 된다. 이제 자식들에게 lazy 값을 물려주기 때문에, 자식들의 lazy 값은 모두 1이 더해져 3이 된다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109283-af4fba80-c1a3-11eb-8342-399c4622a443.png)
+
++ 5~7은 6~8과 겹치기 때문에, 자식 5~6과 7을 호출하게 된다.
++ 5~6에는 lazy값이 있기 때문에, 현재 노드를 업데이트하고, 자식에게 lazy 값을 물려준다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109332-f0e06580-c1a3-11eb-8a84-304beecfcdc9.png)
+
++ 5~6도 6~8과 겹치기 때문에, 자식 5와 6을 호출하게 된다.
++ 자식 5와 6은 합쳐서 설명한다. 5와 6은 모두 lazy 값이 있기 때문에, 노드를 업데이트한다. 각각 3이 더해져 5는 4, 6은 11이 된다. 자식은 없기 때문에, lazy를 물려줄 수 없다. 5는 6~8에 포함되지 않기 때문에 0을 리턴하고, 6은 6~8에 포함되기 때문에, 저장되어 있는 값을 리턴한다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109393-3735c480-c1a4-11eb-9853-59f453fff9e9.png)
+
++ 7번 노드는 lazy값이 있기 때문에, 먼저 노드를 업데이트한다. 6~8에 7은 포함되기 때문에, 저장되어 있는 값을 리턴한다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109427-63e9dc00-c1a4-11eb-9996-6b23b7e90d23.png)
+
++ 이제 8~9번 노드를 방문한다. 역시 lazy 값이 있기 때문에, 노드를 업데이트하고, 자식에게 lazy 값을 물려주게 된다. 그 다음, 8~9는 6~8과 겹치기 때문에, 두 자식을 각각 호출해야 한다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109454-81b74100-c1a4-11eb-9f02-f0f0b1967a99.png)
+
++ 8번과 9번노드도 함께 설명한다. 두 노드 모두 lazy가 있기 때문에, 노드를 업데이트한다. 8은 6~8에 포함되기 때문에 저장되어 있는 값을 리턴하고, 9는 포함되지 않기 때문에 0을 리턴한다.
+
+![image](https://user-images.githubusercontent.com/43658658/120109473-91cf2080-c1a4-11eb-8828-b56c0dd9acb2.png)
+
++ 마지막으로 **리턴한 값들을 모두 더하면서 재귀적으로 거슬러 올라가면** 원하는 답을 얻을 수 있다.
++ step 3를 base_case_sum 함수로 표현하면 아래와 같다. 일반적인 세그먼트 트리의 합 구하기와 같으나 **update_lazy를 초반에 적어줌으로써 lazy 값을 tree에 업데이트한다는 것이 차이점**이다.
+
+ ``` python
+ def base_case_sum(node, start, end, left, right):
+    # 현재 노드에 남아 있는 lazy 값을 tree 값에 더해주고 이를 합에 반영하기 위함으로 update_lazy 를 쓴다.
+    update_lazy(node, start, end)
+    if end < left or right < start:
+        return 0
+
+    if left <= start and end <= right:
+        return tree[node]
+
+    mid = (start + end) // 2
+    return base_case_sum(node*2, start, mid, left, right) + base_case_sum(node*2+1, mid+1, end, left, right)
+```
+
++ 이 문제의 전체 코드는 아래와 같다.
+
+``` python
+# 변경되는 원소가 하나가 아닌 '구간' 일 경우 Lazy Propagation 을 이용한다.
+from math import *
+import sys
+sys.setrecursionlimit(10**5)
+input = sys.stdin.readline
+
+n, m, k = map(int, input().split())
+
+h = int(ceil(log2(n)))
+t_size = 1 << (h+1)
+tree = [0] * t_size
+lazy = [0] * t_size  # lazy 값.
+
+num = [int(input()) for _ in range(n)]
+
+
+def init(node, start, end):
+    if start == end:
+        tree[node] = num[start]
+        return tree[node]
+
+    mid = (start + end) // 2
+    tree[node] = init(node*2, start, mid) + init(node*2+1, mid+1, end)
+    return tree[node]
+
+
+def update_lazy(node, start, end):  # 현재 노드에 남아있는 lazy 값을 tree 값에 더해준다.
+    if lazy[node] != 0:
+        tree[node] += (end-start+1) * lazy[node]
+        if start != end:  # 리프 노드가 아니면,
+            lazy[node*2] += lazy[node]  # 자식 노드에게 lazy 값을 물려준다.
+            lazy[node*2+1] += lazy[node]
+        lazy[node] = 0  # 초기화
+
+
+def update(node, d, start, end, left, right):
+    # 현재 노드에 남아 있는 lazy 값을 tree 값에 더해주고 초기화한다.
+    # update 의 update_lazy 는 새로운 lazy 값을 받기 위함이다.
+    update_lazy(node, start, end)
+    if end < left or right < start:  # 전혀 속하지 않으면 스킵
+        return
+
+    if left <= start and end <= right:  # 완전히 속하면,
+        tree[node] += (end-start+1) * d
+        if start != end:  # 리프 노드가 아니면,
+            lazy[node*2] += d  # 아래의 노드는 나중에 업데이트 하기 위해 lazy에 기록해둔다.
+            lazy[node*2+1] += d
+    else:  # 일부만 속하면,
+        mid = (start + end) // 2
+        update(node*2, d, start, mid, left, right)
+        update(node*2+1, d, mid+1, end, left, right)
+        tree[node] = tree[node*2] + tree[node*2+1]
+
+
+def base_case_sum(node, start, end, left, right):
+    # 현재 노드에 남아 있는 lazy 값을 tree 값에 더해주고 이를 합에 반영하기 위함으로 update_lazy 를 쓴다.
+    update_lazy(node, start, end)
+    if end < left or right < start:
+        return 0
+
+    if left <= start and end <= right:
+        return tree[node]
+
+    mid = (start + end) // 2
+    return base_case_sum(node*2, start, mid, left, right) + base_case_sum(node*2+1, mid+1, end, left, right)
+
+
+init(1, 0, n-1)
+
+for _ in range(m+k):
+    arr = list(map(int, input().split()))
+    if arr[0] == 1:
+        update(1, arr[3], 0, n-1, arr[1]-1, arr[2]-1)
+    else:
+        print(base_case_sum(1, 0, n-1, arr[1]-1, arr[2]-1))
+
+```
+
+
+
+
+
