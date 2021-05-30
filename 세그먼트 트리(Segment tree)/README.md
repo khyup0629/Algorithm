@@ -180,7 +180,10 @@ for i in range(m+k):
 + start ~ end 구간이 b ~ c 구간을 아예 벗어나있는 경우는 0 값을 반환한다.
 + start ~ end 구간이 b ~ c 구간을 걸쳐 있는 경우 왼쪽, 오른쪽 구간을 나눠서 진행한다.
 
-![image](https://user-images.githubusercontent.com/43658658/120097639-95df4c00-c16c-11eb-8746-bf14d2a84b72.png)
++ 최상단 노드부터 아래로 가면서 base-case를 구하고
++ base-case들의 return 값을 아래에서부터 재귀적으로 더하면서 올라오면 답을 구할 수 있다.
+
+![image](https://user-images.githubusercontent.com/43658658/120097872-c8d60f80-c16d-11eb-96c4-1cedc3dca2d4.png)
 
 ``` python
 def base_case_sum(node, start, end, left, right):
@@ -194,5 +197,3 @@ def base_case_sum(node, start, end, left, right):
     # base-case를 모두 더한다.
     return base_case_sum(node * 2, start, mid, left, right) + base_case_sum(node*2+1, mid+1, end, left, right)
 ```
-
-
