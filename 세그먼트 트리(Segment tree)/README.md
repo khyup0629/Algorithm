@@ -87,7 +87,7 @@ for i in range(m+k):
     a, b, c = map(int, input().split())
     if a == 1:
         diff = c - num[b-1]  # 업데이트 할 값과 원래 값의 차이
-        num[b-1] = c  # 업데이트(굳이 할 필요는 없다)
+        num[b-1] = c  # 업데이트
         update(1, b-1, diff, 0, cnt-1)  # 최상단 노드부터 시작.
     else:
         print(base_case_sum(1, 0, cnt-1, b-1, c-1))
@@ -165,7 +165,7 @@ for i in range(m+k):
     a, b, c = map(int, input().split())
     if a == 1:
         diff = c - num[b-1]  # 업데이트 할 값과 원래 값의 차이
-        num[b-1] = c  # 업데이트(굳이 할 필요는 없다)
+        num[b-1] = c  # 업데이트
         update(1, b-1, diff, 0, cnt-1)  # 최상단 노드부터 시작.
     else:
         print(base_case_sum(1, 0, cnt-1, b-1, c-1))
