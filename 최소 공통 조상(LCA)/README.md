@@ -15,11 +15,11 @@
 ![image](https://user-images.githubusercontent.com/43658658/124074854-0be21600-da7f-11eb-964a-f96115ed494b.png)
 
 2. 최소 공통 조상을 찾을 두 노드 확인
-	1. 먼저 두 노드의 깊이(depth)가 동일하도록 거슬러 올라간다.
+- 먼저 두 노드의 깊이(depth)가 동일하도록 거슬러 올라간다.
 
   ![image](https://user-images.githubusercontent.com/43658658/124075517-f15c6c80-da7f-11eb-9573-e33d14dd95d7.png)
 
-	2. 이후에 부모가 같아질 때까지 반복적으로 두 노드의 부모 방향으로 거슬러 올라간다.
+- 이후에 부모가 같아질 때까지 반복적으로 두 노드의 부모 방향으로 거슬러 올라간다.
   
   ![image](https://user-images.githubusercontent.com/43658658/124075671-35e80800-da80-11eb-9988-f2091ebd8d99.png)
   
