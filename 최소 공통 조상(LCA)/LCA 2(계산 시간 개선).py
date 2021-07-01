@@ -4,9 +4,11 @@ import sys
 # 시간 초과를 피하기 위한 빠른 입력
 input = sys.stdin.readline
 sys.setrecursionlimit(100000)
+# 데이터가 최대 1,000,000개 들어올 수 있다고 가정.
 LOG = 21  # 2^20 = 1,000,000
 
 n = int(input())
+# parent[j][i] : j번 노드의 2^i 위의 부모 노드
 parent = [[0] * LOG for _ in range(n + 1)]
 depth = [0] * (n + 1)
 visited = [False] * (n + 1)
@@ -23,8 +25,7 @@ def dfs(x, d):
     depth[x] = d
     for i in graph[x]:
         if not visited[i]:
-            visited[i] = True
-            parent[i][0] = x
+            parent[i][0] = x  # 바로 위의 2^0 부모 노드들을 기록.
             dfs(i, d + 1)
 
 
@@ -32,6 +33,7 @@ def set_parent():  # 2^i 만큼 거슬러 올라갔을 때의 부모 노드 번�
     dfs(1, 0)
     for i in range(1, LOG):
         for j in range(1, n+1):
+            # j번 노드의 2^i 부모 노드는 j번 노드의 2^i-1 의 부모 노드의 2^i-1 거슬러 올라간 부모 노드와 같다.
             parent[j][i] = parent[parent[j][i-1]][i-1]
 
 
@@ -61,47 +63,4 @@ for i in range(m):
     a, b = map(int, input().split())
     print(lca(a, b))
 
-"""
-문제
-N(2 ≤ N ≤ 100,000)개의 정점으로 이루어진 트리가 주어진다. 트리의 각 정점은 1번부터 N번까지 번호가 매겨져 있으며, 루트는 1번이다.
-
-두 노드의 쌍 M(1 ≤ M ≤ 100,000)개가 주어졌을 때, 두 노드의 가장 가까운 공통 조상이 몇 번인지 출력한다.
-
-입력
-첫째 줄에 노드의 개수 N이 주어지고, 다음 N-1개 줄에는 트리 상에서 연결된 두 정점이 주어진다. 
-그 다음 줄에는 가장 가까운 공통 조상을 알고싶은 쌍의 개수 M이 주어지고, 다음 M개 줄에는 정점 쌍이 주어진다.
-
-출력
-M개의 줄에 차례대로 입력받은 두 정점의 가장 가까운 공통 조상을 출력한다.
-
-예제 입력 1 
-15
-1 2
-1 3
-2 4
-3 7
-6 2
-3 8
-4 9
-2 5
-5 11
-7 13
-10 4
-11 15
-12 5
-14 7
-6
-6 11
-10 9
-2 6
-7 6
-8 13
-8 15
-예제 출력 1 
-2
-4
-2
-1
-3
-1
-"""
+# 문제 : https://www.acmicpc.net/problem/11438
