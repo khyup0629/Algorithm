@@ -2,7 +2,7 @@
 
 ## 최소 공통 조상(Lowest Common Ancestor)
 
-- 두 노드의 공토된 조상 중에서 가장 가까운 조상을 찾는 문제.
+- 두 노드의 공통된 조상 중에서 가장 가까운 조상을 찾는 문제.
 
 ![image](https://user-images.githubusercontent.com/43658658/124074763-ece38400-da7e-11eb-9fad-8d602e092bbc.png)
 
