@@ -17,7 +17,7 @@ def postorder(start, end):
     cnt += 1  # 전위 순회 리스트를 앞에서부터 탐색
 
     stand = preorder[cnt]  # 현재 탐색중인 전위 순회 리스트 원소
-    # 중위 순회에서 현재 탐색 중인 전위 순회 원소의 인덱스를 기준으로 왼쪽, 오른쪽 구간으로 나눠서 재귀함수 호출
+    # 중위 순회에서 현재 탐색 중인 전위 순회 원소의 중위 순회 인덱스를 기준으로 왼쪽, 오른쪽 구간으로 나눠서 재귀함수 호출
     postorder(start, idx_in[stand] - 1)
     postorder(idx_in[stand] + 1, end)
     result.append(str(stand))  # 후위 순회 저장
