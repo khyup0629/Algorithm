@@ -1,3 +1,55 @@
+# 딕셔너리를 이용한 풀이
+from collections import defaultdict
+import sys
+sys.setrecursionlimit(10**5)
+n = int(input())
+
+tree = defaultdict(list)  # Class:list 딕셔너리 생성
+
+for _ in range(n):
+    parent, child1, child2 = input().split()
+    tree[parent].append(child1)
+    tree[parent].append(child2)
+
+
+def preorder(node):  # 전위 순회
+    global preorderAns
+    preorderAns += node
+    if tree[node][0] != '.':
+        preorder(tree[node][0])
+    if tree[node][1] != '.':
+        preorder(tree[node][1])
+
+
+def inorder(node):  # 중위 순회
+    global inorderAns
+    if tree[node][0] != '.':
+        inorder(tree[node][0])
+    inorderAns += node
+    if tree[node][1] != '.':
+        inorder(tree[node][1])
+
+
+def postorder(node):  # 후위 순회
+    global postorderAns
+    if tree[node][0] != '.':
+        postorder(tree[node][0])
+    if tree[node][1] != '.':
+        postorder(tree[node][1])
+    postorderAns += node
+
+
+preorderAns = ''
+preorder('A')
+print(preorderAns)
+inorderAns = ''
+inorder('A')
+print(inorderAns)
+postorderAns = ''
+postorder('A')
+print(postorderAns)
+
+# class를 이용한 풀이
 class Node:
     def __init__(self, left, right):
         self.left = left
