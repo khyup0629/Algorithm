@@ -4,32 +4,35 @@
 from bisect import bisect_left
 
 n = int(input())
-array = list(map(int, input().split()))
-dp = [0] * n  # 어떤 수가 가질 수 있는 최대 길이가 저장된다.
-dp[0] = 1
+arr = list(map(int, input().split()))
+dp = [1] * n  # 어떤 수가 가질 수 있는 최대 길이가 저장된다.
 
 # temp에 속해있는 원소들로는 가장 긴 증가하는 부분 수열이라 할 수 없는 임시 수열.
-temp = [array[0]]
+temp = [arr[0]]
 for i in range(1, n):
-    if temp[-1] < array[i]:
-        temp.append(array[i])
+    if temp[-1] < arr[i]:
+        temp.append(arr[i])
         dp[i] = len(temp)
     else:
-        dp[i] = bisect_left(temp, array[i]) + 1
-        temp[dp[i]-1] = array[i]
+        idx = bisect_left(temp, arr[i])
+        temp[idx] = arr[i]
+        dp[i] = idx + 1
 
-max_len = len(temp)  # 가장 증가하는 부분 수열의 길이
-print(max_len)
+maxLen = max(dp)  # 가장 증가하는 부분 수열의 길이
+print(maxLen)
 
-result = []  # 수가 내림차순으로 저장된다.
+resultArr = []  # 수가 내림차순으로 저장된다.
 for i in range(n-1, -1, -1):  # DP 테이블의 뒤에서부터 확인하면서
-    if dp[i] == max_len:  # 최대 길이와 dp 테이블의 해당하는 인덱스가 같다면,
-        result.append(array[i])  # array 중 해당하는 인덱스의 수를 저장한다.
-        max_len -= 1
+    if dp[i] == maxLen:  # 최대 길이와 dp 테이블의 해당하는 인덱스가 같다면,
+        resultArr.append(arr[i])  # array 중 해당하는 인덱스의 수를 저장한다.
+        maxLen -= 1
 
-# 내림차순으로 저장된 수를 거꾸로 탐색하면서 출력한다.
-for i in range(len(result)-1, -1, -1):
-    print(result[i], end=' ')
+# 내림차순을 뒤집어 오름차순으로 만든 다음 출력한다.
+resultArr = resultArr[::-1]
+for num in resultArr:
+    print(num, end=' ')
+
+# 문제 : https://www.acmicpc.net/problem/14003
 
 """
 풀이 예시)
@@ -52,33 +55,4 @@ temp = [10, 15, 20], dp[3] = 3
 dp의 뒤에서부터 최대 길이와 같은 것을 찾고, 찾으면 최대 길이 변수를 -1하면서 내림차순으로 찾는다.
 result = [20, 15, 10]
 7. 출력할 땐 result의 뒤에서부터 출력한다.
-
-문제
-수열 A가 주어졌을 때, 가장 긴 증가하는 부분 수열을 구하는 프로그램을 작성하시오.
-
-예를 들어, 수열 A = {10, 20, 10, 30, 20, 50} 인 경우에 
-가장 긴 증가하는 부분 수열은 A = {10, 20, 10, 30, 20, 50} 이고, 길이는 4이다.
-
-입력
-첫째 줄에 수열 A의 크기 N (1 ≤ N ≤ 1,000,000)이 주어진다.
-
-둘째 줄에는 수열 A를 이루고 있는 Ai가 주어진다. (-1,000,000,000 ≤ Ai ≤ 1,000,000,000)
-
-출력
-첫째 줄에 수열 A의 가장 긴 증가하는 부분 수열의 길이를 출력한다.
-
-둘째 줄에는 정답이 될 수 있는 가장 긴 증가하는 부분 수열을 출력한다.
-
-예제 입력 1 
-6
-10 20 10 30 20 50
-예제 출력 1 
-4
-10 20 30 50
-예제 입력 2
-3
-30 35 10
-예제 출력 2
-2
-30 35
 """
