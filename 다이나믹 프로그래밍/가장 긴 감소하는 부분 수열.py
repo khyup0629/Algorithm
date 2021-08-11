@@ -14,3 +14,17 @@ for i in range(n):
 print(max(dp))
 
 # 문제 : https://www.acmicpc.net/problem/11722
+
+# 원래의 수열에서 -를 붙여 음수로 만든 뒤 증가하는 수열로 만들어서 풀 수도 있습니다.
+n = int(input())
+
+arr = list(map(int, input().split()))
+arr = [-arr[i] for i in range(n)]
+dp = [1] * n
+
+for i in range(n):
+    for j in range(i+1):
+        if arr[i] > arr[j]:
+            dp[i] = max(dp[i], dp[j] + 1)
+
+print(max(dp))
