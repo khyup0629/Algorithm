@@ -15,7 +15,7 @@ m = int(input())
 
 graph = [[] for _ in range(n+1)]  # 위상 정렬을 위한 정방향 그래프
 back_graph = [[] for _ in range(n+1)]  # 백트래킹을 위한 역방향 그래프
-indegree = [0] * (n+1)
+indegree = [0] * (n+1)  # 전입 차수
 for _ in range(m):
     a, b, c = map(int, input().split())
     graph[a].append((b, c))
@@ -23,13 +23,11 @@ for _ in range(m):
     indegree[b] += 1
 
 start, end = map(int, input().split())
-
 dp = [0] * (n+1)
 
 
 def topological_sorting():
     # 위상 정렬
-    global cnt
     q = deque()
     for i in range(n+1):
         if indegree[i] == 0:
@@ -44,9 +42,10 @@ def topological_sorting():
                 q.append(x)
 
     # 백트래킹(휴리스틱)
+    global cnt
     visited = [False] * (n + 1)
-    q.append(end)
     visited[end] = True
+    q.append(end)
     while q:
         now = q.popleft()
         for x, cost in back_graph[now]:
@@ -55,7 +54,7 @@ def topological_sorting():
                 if not visited[x]:  # q에 중복으로 추가되는 것을 막아준다.
                     q.append(x)  # 방문을 하지 않았다면 방문 처리를 하고 한 번만 q에 추가해준다.
                     visited[x] = True
-                cnt += 1  # 도로의 갯수 +1
+                cnt += 1  # 도로의 개수 +1
 
 
 cnt = 0
