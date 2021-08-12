@@ -1,3 +1,5 @@
+# 아래의 입력 예제를 토대로 차근차근 따라가보면 실패함수에 대해서 이해할 수 있습니다.
+
 l = int(input())
 s = input()
 
@@ -5,9 +7,9 @@ s = input()
 j = 0
 pi = [0] * l
 for i in range(1, l):
-    while j > 0 and s[j] != s[i]:
+    while j > 0 and s[i] != s[j]:
         j = pi[j-1]
-    if s[j] == s[i]:
+    if s[i] == s[j]:
         j += 1
         pi[i] = j
 
