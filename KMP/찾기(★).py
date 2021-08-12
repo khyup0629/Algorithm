@@ -6,19 +6,19 @@ P = input()
 # 실패함수
 # P 문자열에 대해서 실패함수를 통해 각 위치까지의
 # 접두부와 접미부가 같은 길이를 pi 테이블에 기록한다.
-a = 0
+j = 0
 pi = [0] * len(P)
-for b in range(1, len(P)):
-    while a > 0 and P[a] != P[b]:
-        a = pi[a - 1]
-    if P[a] == P[b]:
-        a += 1
-        pi[b] = a
+for i in range(1, len(P)):
+    while j > 0 and P[i] != P[j]:
+        j = pi[j - 1]
+    if P[i] == P[j]:
+        j += 1
+        pi[i] = j
 
 i = 0  # T와 P를 비교하는 시작점
 j = 0  # P 문자열 위를 움직이는 인덱스
 cnt = 0  # 같은 문자열의 갯수
-result = []  # 같은 문자열이 나타나는 T기준 위치(인덱스+1)
+firstIndex = []  # 같은 문자열이 나타나는 T기준 위치(인덱스+1)
 while i+j < len(T):
     if T[i+j] != P[j]:
         if j == 0:  # 첫 인덱스부터 문자가 다르다면,
@@ -37,12 +37,12 @@ while i+j < len(T):
         j += 1
         if j == len(P):
             cnt += 1
-            result.append(i+1)
+            firstIndex.append(i+1)
             i += j - pi[j - 1]
             j = pi[j - 1]
 
 print(cnt)
-for i in result:
+for i in firstIndex:
     print(i, end=' ')
 
 # 문제 : https://www.acmicpc.net/problem/1786
