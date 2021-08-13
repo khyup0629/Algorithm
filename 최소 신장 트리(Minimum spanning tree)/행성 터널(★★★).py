@@ -34,27 +34,29 @@ def union(a, b):
     parent[b] = a
 
 
-# 노드 번호 별 좌표 저장 (0 ~ n-1)
-cor = [0] * n
-for a in range(n):
+# 노드 번호 별 좌표 저장 (1 ~ n)
+planet = []
+for i in range(1, n+1):
     x, y, z = map(int, input().split())
-    # (x, y, z, 노드 번호)
-    cor[a] = (x, y, z, a)
+    # (x좌표, y좌표, z좌표, 노드 번호)
+    planet.append((x, y, z, i))
 
 # x, y, z 좌표에 대해 각각 정렬한 후 간선 구하기
-graph = []
+edge = []
 for i in range(3):
-    cor.sort(key=lambda x:x[i])
+    planet.sort(key=lambda x:x[i])
     for j in range(1, n):
         # (비용, 첫 번째 노드, 두 번째 노드)
-        graph.append((abs(cor[j][i] - cor[j-1][i]), cor[j][3], cor[j-1][3]))
+        edge.append((abs(planet[j][i]-planet[j-1][i]), planet[j][3], planet[j-1][3]))
 
-graph.sort()
+edge.sort()
 
 result = 0
-for cost, a, b in graph:
+for cost, a, b in edge:
     if find(a) != find(b):
         union(a, b)
         result += cost
 
 print(result)
+
+# 문제 : https://www.acmicpc.net/problem/2887
