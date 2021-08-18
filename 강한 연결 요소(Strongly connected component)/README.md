@@ -1,6 +1,7 @@
 # 강한 연결 요소
 
 + [코사라주(Kosaraju) 알고리즘](#코사라주-Kosaraju-알고리즘)
++ [타잔(Tarjan) 알고리즘](#타잔Tarjan-알고리즘)
 
 ## 코사라주(Kosaraju) 알고리즘
 
