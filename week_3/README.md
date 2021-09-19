@@ -185,6 +185,63 @@ wordpress에서 사용할 수 있는 MySQL을 무료버전으로 만들어보겠
 
 > <h3>서브넷 그룹 생성</h3>
 
+DB를 만들기 전에 DB가 사용할 서브넷 설정을 해보겠습니다.   
+사전에 만들었던 프라이빗 서브넷 2개를 그룹 지어보겠습니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133920468-cbfe4654-e827-47e1-ab66-1a5e3f2ba875.png)
+
+`가용 영역`은 이전에 가용 영역으로 지정했던 영역으로 지정합니다.   
+(저의 경우 `2a`, `2b`를 지정했습니다)
+
+`서브넷`은 프라이빗 서브넷 2개를 선택합니다.
+
+> <h3>데이터베이스 생성</h3>
+
+[데이터베이스] 탭으로 들어가 우측 상단의 `데이터베이스 생성` 버튼을 눌러줍니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133920712-5ef181d8-6b4b-4977-bf57-b24c32b6c59b.png)
+
+![image](https://user-images.githubusercontent.com/43658658/133920723-eb7a2ed6-d5a4-47c2-b322-6eab7e0459b2.png)
+
+MySQL로 생성하고 프리티어로 생성합니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133920734-4af1bfbf-2031-4f08-bc3b-99c9286e8d5e.png)
+
+이 항목에서 설정한 아이디와 패스워드는 DB에 접속할 때 쓰이는 정보입니다.   
+추후 wordpress의 환경설정 파일인 wp-config.php에 쓰일 정보가 됩니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133920769-e61fd008-5a90-4fd2-afa3-ec24dcbd04f9.png)
+
+`스토리지 자동 조정`은 비용이 청구될 수 있는 요소이므로 체크 해제합니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133920929-5bbb16aa-aa37-44ab-8fae-91ebe488ffdc.png)
+
+앞서 만들었던 VPC와 서브넷 그룹을 선택합니다.   
+서브넷은 프라이빗한 영역에 있으므로 인터넷 망 접근이 불필요합니다.   
+따라서 퍼블릭 액세스 기능은 아니오로 체크합니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133921017-7e624c6e-dead-4b7c-964d-241ac13ee0e4.png)
+
+데이터베이스를 위한 보안그룹을 `새로 생성`합니다.   
+가용 영역은 아무거나 설정해도 무방합니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133921140-52fb1a77-ab97-49b8-b684-5776147a634e.png)
+
+암호 인증은 기본값으로 둡니다.   
+IAM을 이용하는 방법도 있는데, 이는 AWS에서 제공하는 보안체계에 따라 사용하는 방법입니다.   
+우리는 데이터베이스 자체적으로 암호로 인증하는 방법을 선택하겠습니다.   
+이렇게 설정하면 DB가 암호를 가지고 있을 때 DB에 접근이 가능하게 됩니다.
+
+![image](https://user-images.githubusercontent.com/43658658/133921168-d1f2bb4c-3166-4859-ba81-1fd40930e02d.png)
+
+데이터베이스가 생성될 때 초기 데이터베이스의 이름을 설정합니다.   
+백업의 경우 자동 활성화를 할 경우 비용이 청구될 수 있으므로 체크 해제합니다.   
+(백업이 필요하다면 체크합니다)
+
+![image](https://user-images.githubusercontent.com/43658658/133921206-af6fdfe7-d1b1-49b4-bd1f-25a3fb7591d2.png)
+
+업데이트는 필요 없으므로 체크 해제했습니다.
+
 
 
 
