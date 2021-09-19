@@ -223,5 +223,8 @@ select count(1) from cmt_table
 쓰레드가 한 번 걸릴 때마다 첫 번째 칼럼에 `a`라는 데이터가 insert됩니다.   
 앞서 총 20번의 접속 부하를 지정해주었으므로, 결괏값으로 20이 나타납니다.
 
+![image](https://user-images.githubusercontent.com/43658658/133932143-ec9286c9-335b-4b25-9ce9-f4c0355e0d14.png)
+
+DB의 CloudWatch 서비스를 통해 여러 지표들을 확인할 수 있습니다.   
 `Thread Group`을 조절해서 CPU가 높아지는 순간이 언제인지 테스트 해보면서 DB의 성능적 한계를 파악할 수 있습니다.
 
