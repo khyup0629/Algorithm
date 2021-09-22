@@ -138,23 +138,49 @@ CloudFront에는 `S3`, `Edge Location`이 존재합니다.
 
 `DynamoDB`는 NoSQL 데이터베이스의 한 종류로 관계형 데이터베이스와 반대되는 개념의 데이터베이스입니다.   
 => [관계형 데이터베이스(RDS)와 NoSQL 데이터베이스의 차이점](https://aws.amazon.com/ko/nosql/)   
-`DynamoDB`는 어떤 규모에서도 10밀리초 미만의 성능을 제공하는 키-값 및 문서 데이터베이스입니다. 완전관리형의 내구성이 뛰어난 다중 리전, 다중 활성 데이터베이스로서, 인터넷 규모 애플리케이션을 위한 보안, 백업 및 복원, 인 메모리 캐싱 기능을 기본적으로 제공합니다. `DynamoDB`는 하루에 10조 개 이상의 요청을 처리할 수 있고, 초당 2,000만 개 이상의 피크 요청을 지원할 수 있습니다.    
-주로 모바일, 웹, 게임, 광고 기술, IoT 및 규모와 상관없이 `지연 시간이 짧은 데이터 액세스`가 필요한 기타 애플리케이션을 위한 키-값 및 문서 데이터베이스로 `DynamoDB`를 선택합니다.
+`DynamoDB`는 어떤 규모에서도 10밀리초 미만의 성능을 제공하는 Key-Value 및 문서 데이터베이스입니다. 완전관리형의 내구성이 뛰어난 다중 리전, 다중 활성 데이터베이스로서, 인터넷 규모 애플리케이션을 위한 보안, 백업 및 복원, 인 메모리 캐싱 기능을 기본적으로 제공합니다. `DynamoDB`는 하루에 10조 개 이상의 요청을 처리할 수 있고, 초당 2,000만 개 이상의 피크 요청을 지원할 수 있습니다.    
+주로 모바일, 웹, 게임, 광고 기술, IoT와 같이 규모와 상관없이 `지연 시간이 짧은 데이터 액세스`가 필요한 기타 애플리케이션을 위한 Key-Value 및 문서 데이터베이스로 `DynamoDB`를 사용합니다.
+
+## SES
+
+`SES`는 개발자가 모든 애플리케이션 안에서 이메일을 보낼 수 있는 경제적이고, 유연하며, 확장 가능한 이메일 서비스입니다.    
+- **트랜잭션 이메일** : `구매 확인` 또는 `암호 재설정`과 같이 애플리케이션이 고객에게 전송하는 즉각적인 `트리거 기반 이메일`을 보낼 수 있습니다.
+- **마케팅 이메일** : 맞춤형 콘텐츠 및 이메일 템플릿을 사용하여 `특별 제안` 및 `뉴스레터`와 같은 `제품 및 서비스를 홍보`할 수 있습니다.
+- **대량 이메일 커뮤니케이션** : `알림` 및 `공지 사항`과 같은 `대량 커뮤니케이션`을 대규모 커뮤니티에 보내고 구성 세트를 사용하여 결과를 추적할 수 있습니다.
 
 ## 고객 맞춤형 서비스 추천 아키텍쳐
 
-[SQS](https://aws.amazon.com/ko/sqs/)   
-[SNS](https://aws.amazon.com/ko/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)   
-[Glue](https://aws.amazon.com/ko/glue/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)   
-[Personalize](https://aws.amazon.com/ko/personalize/)
+- [SQS](https://aws.amazon.com/ko/sqs/)   
+서비스 요청을 저장하고, 대기열을 만들어 처리할 수 있도록 하는 서비스입니다.
+
+- [SNS](https://aws.amazon.com/ko/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)   
+`구독`중인 엔드포인트 혹은 사용자에게 메세지를 보내는 서비스입니다.
+
+=> [SQS와 SNS에 대한 자세한 설명(반대의 개념이 아닙니다)](https://aws-hyoh.tistory.com/23)
+
+- [Glue](https://aws.amazon.com/ko/glue/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)   
+AWS Glue는 분석, 기계 학습 및 애플리케이션 개발을 위해 데이터를 쉽게 탐색, 준비, 그리고 조합할 수 있도록 지원하는 서버리스 데이터 통합 서비스입니다.
+
+- [Personalize](https://aws.amazon.com/ko/personalize/)   
+Amazon Personalize를 사용하는 개발자는 Amazon.com에서 실시간 맞춤화 추천에 사용하는 것과 동일한 기계 학습(ML) 기술로 애플리케이션을 구축할 수 있습니다. `ML 전문 지식이 필요하지 않습니다.`   
+Amazon Personalize를 통해 개발자는 특정 제품 추천, 맞춤화된 제품 순위 재지정, 맞춤화된 직접 마케팅 등을 포함하여 다양한 맞춤화 환경을 제공할 수 있는 애플리케이션을 손쉽게 구축할 수 있습니다. Amazon Personalize는 엄격한 정적 규칙을 기반으로 하는 추천 시스템 수준을 뛰어넘어 사용자 지정 ML 모델을 훈련, 조정 및 배포함으로써 소매, 미디어 및 엔터테인먼트와 같은 산업의 고객들에게 고도의 맞춤형 추천을 제공할 수 있는 완전 관리형 기계 학습 서비스입니다.
 
 ## AWS 웹서버 아키텍처 - 쇼핑몰
 
 ![image](https://user-images.githubusercontent.com/43658658/134333004-ea914c15-e851-4c99-9a36-fccb5854f53d.png)
 
-
-
-
+- `3-tier(WEB-WAS-DB)`로 구성
+- 접속을 여러 인스턴스로 분산하기 위한 `ELB(Elastic Load Balancing)` 사용
+- 순간적인 접속 부하를 해결하기 위한 `Auto Scaling` 사용
+- 관계형 데이터베이스(`RDS`)와 NoSQL 데이터베이스(`Dynamo DB`)로 구성
+- 콘텐츠 캐시를 위한 `CloudFront` 사용
+- `API Gateway`와 `Lambda`를 이용한 서버리스 환경 구축
+- `SQS`로 사용자가 원하는 서비스 정보를 습득
+- `SNS`로 사용자의 결제 정보 등을 습득
+- 이미지 관리 및 고객 맞춤형 서비스 제공을 위한 `S3(Amazon Simple Storage Service)` 사용
+- `Glue`와 `Personalize`를 활용해 머신 러닝을 기반으로 한 고객 맞춤형 서비스 제공
+- `CloudWatch`로 서비스 관리 및 모니터링
+- 이메일을 통한 고객과의 다양한 커뮤니케이션을 위한 `SES` 사용
 
 ---
 참고한 아키텍처   
