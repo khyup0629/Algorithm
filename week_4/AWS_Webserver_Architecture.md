@@ -113,14 +113,14 @@ WAS는 Response 객체를 HttpResponse 형태로 바꾸어 Web Server에 전달�
 
 - Servlet => https://gmlwjd9405.github.io/2018/10/28/servlet.html
 
-> <h3>Auto Scaling</h3>
+## Auto Scaling
 
 `Auto Scaling` 기능을 통해 필요에 따라 인스턴스 동적으로 늘리거나 줄일 수 있습니다.   
 
 자세한 설명은 아래의 링크를 통해 예시를 확인해보시기 바랍니다.
 => https://docs.aws.amazon.com/ko_kr/autoscaling/ec2/userguide/auto-scaling-benefits.html
 
-> <h3>CloudFront</h3>
+## CloudFront
 
 `Amazon CloudFront`는 .html, .css, .js 및 이미지 파일과 같은 정적 및 동적 웹 콘텐츠를 사용자에게 더 빨리 배포하도록 지원하는 웹 서비스입니다.
 
@@ -134,7 +134,33 @@ CloudFront에는 `S3`, `Edge Location`이 존재합니다.
 자세한 설명은 아래의 링크를 참조바랍니다.
 => https://docs.aws.amazon.com/ko_kr/AmazonCloudFront/latest/DeveloperGuide/Introduction.html
 
+## Dynamo DB
 
+`DynamoDB`는 NoSQL 데이터베이스의 한 종류로 관계형 데이터베이스와 반대되는 개념의 데이터베이스입니다.   
+=> [관계형 데이터베이스(RDS)와 NoSQL 데이터베이스의 차이점](https://aws.amazon.com/ko/nosql/)   
+`DynamoDB`는 어떤 규모에서도 10밀리초 미만의 성능을 제공하는 키-값 및 문서 데이터베이스입니다. 완전관리형의 내구성이 뛰어난 다중 리전, 다중 활성 데이터베이스로서, 인터넷 규모 애플리케이션을 위한 보안, 백업 및 복원, 인 메모리 캐싱 기능을 기본적으로 제공합니다. `DynamoDB`는 하루에 10조 개 이상의 요청을 처리할 수 있고, 초당 2,000만 개 이상의 피크 요청을 지원할 수 있습니다.    
+주로 모바일, 웹, 게임, 광고 기술, IoT 및 규모와 상관없이 `지연 시간이 짧은 데이터 액세스`가 필요한 기타 애플리케이션을 위한 키-값 및 문서 데이터베이스로 `DynamoDB`를 선택합니다.
+
+## 고객 맞춤형 서비스 추천 아키텍쳐
+
+[SQS](https://aws.amazon.com/ko/sqs/)   
+[SNS](https://aws.amazon.com/ko/sns/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)   
+[Glue](https://aws.amazon.com/ko/glue/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc)   
+[Personalize](https://aws.amazon.com/ko/personalize/)
+
+## AWS 웹서버 아키텍처 - 쇼핑몰
+
+![image](https://user-images.githubusercontent.com/43658658/134333004-ea914c15-e851-4c99-9a36-fccb5854f53d.png)
+
+
+
+
+
+---
+참고한 아키텍처   
+- [UZEN G1 Commerce 플랫폼](https://aws.amazon.com/ko/partners/success/uzen/)
+- [Brandi](https://aws.amazon.com/ko/solutions/case-studies/brandi/)
+- [Trenbe](https://aws.amazon.com/ko/solutions/case-studies/trenbe/)
 
 
 
