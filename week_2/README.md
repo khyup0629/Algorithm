@@ -74,6 +74,6 @@ sudo mv *.html /var/www/html
 
 `/var/www/html` 경로로 들어가서 파일 리스트를 확인해 보면 정상적으로 파일이 옮겨진 것을 확인할 수 있습니다.
 
-![image](https://user-images.githubusercontent.com/43658658/134845201-6695c778-6c12-4270-b0a9-818e2da7e8f4.png)
+![image](https://user-images.githubusercontent.com/43658658/134845354-992c0196-2aef-44fd-a18b-f85a19bb02a0.png)
 
 이제 퍼블릭 IP 주소로 접속을 해보면 배포된 웹 페이지가 띄워지는 것을 확인할 수 있습니다.
