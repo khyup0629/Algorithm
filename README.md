@@ -15,6 +15,14 @@
 - [삭제하는 방법](https://github.com/khyup0629/aws-study/blob/main/week_1/%EC%9B%B9%EC%84%9C%EB%B2%84_%EB%A7%8C%EB%93%A4%EA%B8%B0.md#%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0---%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%9B%B9%EC%84%9C%EB%B2%84-%EC%B6%94%EA%B0%80-%EA%B4%80%EB%A6%AC-%EA%B8%B0%EB%8A%A5)
   - 인스턴스, AMI 및 스냅샷, 보안 그룹, 탄력젹 IP, VPC 삭제하기
 
+## Week 2
+
+- [웹 서버 정적 배포](https://github.com/khyup0629/aws-study/blob/main/week_2/%EC%9B%B9%EC%84%9C%EB%B2%84_%EC%A0%95%EC%A0%81%EB%B0%B0%ED%8F%AC.md#%EC%9B%B9-%EC%84%9C%EB%B2%84-%EC%A0%95%EC%A0%81-%EB%B0%B0%ED%8F%AC)
+	- [프론트엔드 개발](https://github.com/khyup0629/aws-study/tree/main/week_2/KIM-HYEOB-Wep-Page)
+	- Filezilla를 통한 배포
+- [AWS Elastic Beanstalk](https://github.com/khyup0629/aws-study/blob/main/week_2/AWS_Beanstalk.md#aws-beanstalk)
+	- Beanstalk를 통해 웹 서버 구축 및 샘플 소스 배포
+
 ## Week 4
 
 - [성능 테스트](https://github.com/khyup0629/aws-study/blob/main/week_4/%EC%84%B1%EB%8A%A5_%ED%85%8C%EC%8A%A4%ED%8A%B8.md#%EC%84%B1%EB%8A%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8)
