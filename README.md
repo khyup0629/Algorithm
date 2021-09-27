@@ -23,6 +23,23 @@
 - [AWS Elastic Beanstalk](https://github.com/khyup0629/aws-study/blob/main/week_2/AWS_Beanstalk.md#aws-beanstalk)
 	- Beanstalk를 통해 웹 서버 구축 및 샘플 소스 배포
 
+## Week 3
+
+- [2tier 구축](https://github.com/khyup0629/aws-study/blob/main/week_3/2tier_%EA%B5%AC%EC%B6%95.md#2tier-%EA%B5%AC%EC%B6%95)
+	- VPC 마법사를 통한 생성
+	- EC2 인스턴스 생성(Wordpress, Apach, MySQL, PHP 설치)
+	- RDS 생성(서브넷 그룹, 데이터베이스 생성)
+- [로드 밸런싱](https://github.com/khyup0629/aws-study/blob/main/week_3/ELB.md#%EB%A1%9C%EB%93%9C%EB%B0%B8%EB%9F%B0%EC%8B%B1load-balancing)
+	- 인스턴스 복제
+	- 로드 밸런서 생성(ALB, 서버 대상 등록)
+	- ELB 테스트
+- [Wordpress](https://github.com/khyup0629/aws-study/blob/main/week_3/Wordpress.md#wordpress)
+	- Wordpress 설정(wp-config.php) 및 설치
+	- Wordpress 계정 생성
+	- Wordpress 웹 디자인(테마 설치, 사용자 정의하기)
+- [CloudWatch](https://github.com/khyup0629/aws-study/blob/main/week_3/CloudWatch.md#cloudwatch-%EC%82%AC%EC%9A%A9%EB%B2%95)
+	- RDS 모니터링 대시보드 만들기(여러 지표 위젯, 로그 테이블 위젯)
+
 ## Week 4
 
 - [성능 테스트](https://github.com/khyup0629/aws-study/blob/main/week_4/%EC%84%B1%EB%8A%A5_%ED%85%8C%EC%8A%A4%ED%8A%B8.md#%EC%84%B1%EB%8A%A5-%ED%85%8C%EC%8A%A4%ED%8A%B8)
