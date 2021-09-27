@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<!--
+	Telephasic by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Architecture</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="icon" href="images/BlluBird_content.jpg" />
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div id="header" class="container">
+
+						<!-- Logo -->
+							<h1 id="logo"><a href="index.html">KIM HYEOB</a></h1>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li>
+										<a href="awards.html">Awards</a>
+										<!--
+										<ul>
+											<li><a href="#">Lorem ipsum dolor</a></li>
+											<li><a href="#">Magna phasellus</a></li>
+											<li><a href="#">Etiam dolore nisl</a></li>
+											<li>
+												<a href="#">Phasellus consequat</a>
+												<ul>
+													<li><a href="#">Lorem ipsum dolor</a></li>
+													<li><a href="#">Phasellus consequat</a></li>
+													<li><a href="#">Magna phasellus</a></li>
+													<li><a href="#">Etiam dolore nisl</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Veroeros feugiat</a></li>
+										</ul>
+										-->
+									</li>
+									<li><a href="abilities.html">Abilities</a></li>
+									<li class="break"><a href="architecture.html">Archit</a></li>
+									<li><a href="future.html">Future</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper">
+					<div class="container" id="main">
+
+						<!-- Content -->
+							<article id="content">
+								<header>
+									<h2>AWS Web Server Architecture</h2>
+								</header>
+								<a href="https://github.com/khyup0629/aws-study/blob/main/week_4/AWS_Webserver_Architecture.md#aws-%EC%9B%B9%EC%84%9C%EB%B2%84-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90" class="image featured"><img src="images/aws_shoppingmall_architecture.png" alt="" /></a>
+								<p>위 아키텍처는 온라인 쇼핑몰을 위한 AWS 웹서버 아키텍처 구조를 제가 직접 설계한 것입니다.
+								아키텍처를 설계할 때 크게 3가지인 <span style="font-weight:600">가용성, 안정성, 속도</span>를 핵심으로 고려하여 설계하였습니다.
+								이와 더불어서 <span style="font-weight:600">고객 맞춤형 서비스 제공</span>을 위한 구성도 추가하였습니다.<p>
+								<p>먼저 3-tier(WEB-WAS-DB)로 구성해서 정적·동적 컨텐츠 제공에 대한 가용성을 높였습니다.
+								또한 ELB, 오토스케일링, RDS 복제를 통해서 수요가 급증할 때를 대비해 서버의 가용성을 높였습니다.
+								DB는 RDS와 더불어 네트워크 성능이 안정적인 Dynamo DB를 도입함으로써 안정성을 높였습니다.
+								CloudFront를 사용하여 웹 컨텐츠를 사용자에게 빠르게 배포하도록 했습니다.
+								API와 고객 맞춤형 서비스 제공은 Lambda를 이용해서 서버리스 환경을 구축했으며, 특히 고객 맞춤형 서비스는
+								SQS, SNS, Dynamo DB를 통해 데이터를 수집하고, Glue를 통해 마이그레이션한 후, Personalize를 통해
+								데이터를 학습하여 유저에게 서비스를 제공하도록 했습니다. 또한
+								CloudWatch로 서비스를 관리하고 모니터링하고, 다양한 이메일 발송을 위해 SES을 사용했습니다.
+							</p>
+							</article>
+
+					</div>
+				</div>
+
+<!-- Footer -->
+				<div id="footer-wrapper">
+					<div id="footer" class="container">
+						<!--
+						<header class="major">
+							<h2>Euismod aliquam vehicula lorem</h2>
+							<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel sem sit<br />
+							dolor neque semper magna lorem ipsum feugiat veroeros lorem ipsum dolore.</p>
+						</header>
+						-->
+						<div class="row">
+							<!--
+							<section class="col-6 col-12-narrower">
+								<form method="post" action="#">
+									<div class="row gtr-50">
+										<div class="col-6 col-12-mobile">
+											<input name="name" placeholder="Name" type="text" />
+										</div>
+										<div class="col-6 col-12-mobile">
+											<input name="email" placeholder="Email" type="text" />
+										</div>
+										<div class="col-12">
+											<textarea name="message" placeholder="Message"></textarea>
+										</div>
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" value="Send Message" /></li>
+												<li><input type="reset" value="Clear form" /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</section>
+							<section class="col-6 col-12-narrower">
+								<div class="row gtr-0">
+									<ul class="divided icons col-6 col-12-mobile">
+										<li class="icon brands fa-twitter"><a href="#"><span class="extra">twitter.com/</span>untitled</a></li>
+										<li class="icon brands fa-facebook-f"><a href="#"><span class="extra">facebook.com/</span>untitled</a></li>
+										<li class="icon brands fa-dribbble"><a href="#"><span class="extra">dribbble.com/</span>untitled</a></li>
+									</ul>
+									<ul class="divided icons col-6 col-12-mobile">
+										<li class="icon brands fa-instagram"><a href="#"><span class="extra">instagram.com/</span>untitled</a></li>
+										<li class="icon brands fa-youtube"><a href="#"><span class="extra">youtube.com/</span>untitled</a></li>
+										<li class="icon brands fa-pinterest"><a href="#"><span class="extra">pinterest.com/</span>untitled</a></li>
+									</ul>
+								</div>
+							</section>
+							-->
+							<nav id="nav_sns">
+								<ul id="snsicon">
+									<li style="white-space:nowrap;">
+										<a href="https://github.com/khyup0629?tab=repositories" target="_blank"><img src="images/github.png" alt="" width="50"></a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<!--
+					<div id="copyright" class="container">
+						<ul class="menu">
+							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+					-->
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
