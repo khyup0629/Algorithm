@@ -41,6 +41,8 @@ dy = [0, 0, -1, 1]
 dfs(0, 0, result)
 print(result)
 
+# 문제 : https://www.acmicpc.net/problem/1987
+
 """
 3 5
 CBABE
